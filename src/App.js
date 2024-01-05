@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from "./Components/Header.js"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <AddItem />
     </div>
   );
+}
+
+function AddItem() {
+  return(
+    <div>
+      <br/>
+      <label htmlFor="text-form">Add item: </label>
+      <input type="text" id="text-form"></input>
+    </div>
+  )
 }
 
 export default App;
