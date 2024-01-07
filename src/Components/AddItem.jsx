@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
 function AddItemBar(props) {
-	//sets Default state for input bars
+	//Sets Default state for input bars
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState(0);
 	const [type, setType] = useState('');
 	const [brand, setBrand] = useState('');
 
 	/**
-	 * ran on search pressed
+	 * Ran on 'add' button pressed
 	 * adds the new item object to props then resets input feilds to default
 	 */
 	const addItemPressed = () => {

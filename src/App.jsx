@@ -5,13 +5,16 @@ import AddItem from "./Components/AddItem.jsx";
 import ItemsDisplay from "./Components/ItemDisplay.jsx";
 
 function App() {
-  //search filters state (expects an object)
+  //Search filters state (expects an object)
   const [filters, setFilters] = useState({});
-  //add item data state (expects an object with an array of items)
+  //Add item data state (expects an object with an array of items)
   const [dataList, setData] = useState({ items: [] });
 
-  //adds the search filters to the filters use state object
-  //called from SearchBar.jsx
+  /**
+   * Called from SearchBar.jsx
+   * Adds the search filters to the filters use state object
+   * @param {*} searchFilters 
+   */
   const updateFilters = (searchFilters) => {
     setFilters(searchFilters);
   };
@@ -20,7 +23,7 @@ function App() {
    * Called from ItemDisplay.jsx
    * takes in data about the item to be added
    * assigns current 'data' array to 'items'
-   * concats new data to arrat
+   * concats new data to array
    * updates state and logs array
    * @param {*} itemData 
    */

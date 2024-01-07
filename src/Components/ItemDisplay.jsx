@@ -1,7 +1,7 @@
 function ItemsDisplay(props) {
 
   /**
-   * recieves the current dataList array and maps each index in the array to the return function
+   * Recieves the current dataList array and maps each index in the array to the return function
    * return function displays jsx of the items data
    */
   return (

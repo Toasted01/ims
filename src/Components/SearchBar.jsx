@@ -6,6 +6,10 @@ function SearchBar(props) {
 	const [type, setType] = useState('');
 	const [brand, setBrand] = useState('');
 
+	/**
+	 * Ran on search pressed
+	 * adds the new item object to props then resets input feilds to default
+	 */
 	const searchPressed = () => {
 		props.searchItem({name: name, price: price, type: type, brand: brand});
 		setName("");
