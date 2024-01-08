@@ -1,18 +1,39 @@
+/**
+ * Recieves the current dataList array and maps each index in the array to the return function
+ * return function displays jsx of the items data
+ */
 function ItemsDisplay(props) {
-
-  /**
-   * Recieves the current dataList array and maps each index in the array to the return function
-   * return function displays jsx of the items data
-   */
   return (
-    <div>
-      {props.itemsList.map((item) => {
-        return (
-          <p>
-           ID: {item.id} | Name: {item.name} | Price: {item.price} | Type: {item.type} | Brand: {item.brand}
-          </p>
-        );
-      })}
+    <div className="container">
+      <div className="row">
+        <h2>Items</h2>
+      </div>
+      <div className="row">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Type</th>
+              <th scope="col">Brand</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.itemsList.map((item) => {
+              return (
+                <tr>
+                  <th scope="row">#{item.id}</th>
+                  <td>{item.name}</td>
+                  <td>{item.price}</td>
+                  <td>{item.type}</td>
+                  <td>{item.brand}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
