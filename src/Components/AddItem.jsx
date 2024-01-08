@@ -22,7 +22,7 @@ function AddItemBar(props) {
   return (
     <div>
       <div className="row">
-        <h2>Add an Item</h2>
+        <h2>Add to Inventory</h2>
       </div>
       <div className="row">
         <div className="col">
