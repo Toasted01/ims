@@ -14,3 +14,4 @@ Made to Learn react.
 ### Bugs/Future changes
 
 - json-server not digitally signed, use 'powershell -ExecutionPolicy Bypass -Command "json-server db.json"'
+- when making DELETE fetch call the json-server module conks out so probably dont use that for backend

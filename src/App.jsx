@@ -66,6 +66,31 @@ function App() {
   };
 
   /**
+   * Takes an item as a parameter to delete
+   * Performs a fetch delete request on the json server to delete the item at its id
+   * Updates the local array of items
+   * @param {*} item
+   */
+  const deleteItemData = (item) => {
+    console.log(item);
+    const items = dataList["items"];
+    const requestOptions = {
+      method: "DELETE",
+    };
+    fetch(`https://localhost:3000/items/${item.id}`, requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          const idx = items.indexOf(item);
+          items.splice(idx, 1);
+          setData({ items: items });
+        }
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+  };
+
+  /**
    * Creates array of filtered data
    * Checks if each data property is not equal to its default value
    * Checks to see if there is a matching property
@@ -111,8 +136,13 @@ function App() {
         {/**Property 'addItem' will be passed an object used in the addItemToData*/}
       </div>
       <div className="row mt-3">
-        <ItemsDisplay itemsList={filterData(dataList["items"])} />
-        {/**Property 'itemsList' will pass the current dataList array to ItemsDsiplay component through thr filterData function*/}
+        <ItemsDisplay
+          deleteItem={deleteItemData}
+          itemsList={filterData(dataList["items"])}
+        />
+        {/**Property 'itemsList' will pass the current dataList array to ItemsDsiplay component through thr filterData function
+         *Property 'deleteItem' will be passed an item object as a parameter of deleteItemData
+         */}
       </div>
     </div>
   );

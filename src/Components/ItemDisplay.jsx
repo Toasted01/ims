@@ -2,7 +2,7 @@
  * Recieves the current dataList array and maps each index in the array to the return function
  * return function displays jsx of the items data
  */
-function ItemsDisplay(props) {
+function ItemsDisplay({ itemsList, deleteItem }) {
   return (
     <div className="container">
       <div className="row">
@@ -17,10 +17,11 @@ function ItemsDisplay(props) {
               <th scope="col">Price</th>
               <th scope="col">Type</th>
               <th scope="col">Brand</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
-            {props.itemsList.map((item) => {
+            {itemsList.map((item) => {
               return (
                 <tr>
                   <th scope="row">#{item.id}</th>
@@ -28,6 +29,14 @@ function ItemsDisplay(props) {
                   <td>{item.price}</td>
                   <td>{item.type}</td>
                   <td>{item.brand}</td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteItem(item)}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               );
             })}

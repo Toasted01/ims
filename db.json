@@ -1,5 +1,11 @@
 {
   "items": [
-    
+    {
+      "id": 1,
+      "name": "Beans",
+      "price": "4.99",
+      "type": "Food",
+      "brand": "Heinz"
+    }
   ]
 }
