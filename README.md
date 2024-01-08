@@ -8,7 +8,9 @@ Made to Learn react.
 - Ability to add item
 - Ability to display item
 - Ability to search for item by individual properties
+- Saves data to json server
+- Fetch request data from json sever on launch
 
 ### Bugs/Future changes
 
-- Data is currently volatile and is wiped on refresh, will be updated
+- json-server not digitally signed, use 'powershell -ExecutionPolicy Bypass -Command "json-server db.json"'

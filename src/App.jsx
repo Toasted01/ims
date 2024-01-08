@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import SearchBar from "./Components/SearchBar.jsx";
 import AddItem from "./Components/AddItem.jsx";
@@ -7,13 +7,21 @@ import ItemsDisplay from "./Components/ItemDisplay.jsx";
 function App() {
   //Search filters state (expects an object)
   const [filters, setFilters] = useState({
-    name: '',
+    name: "",
     price: 0,
-    type: '',
-    brand: '',
+    type: "",
+    brand: "",
   });
   //Add item data state (expects an object with an array of items)
   const [dataList, setData] = useState({ items: [] });
+
+  useEffect(() => {
+    fetch("http://localhost:3000/items")
+      .then((response) => response.json())
+      .then((responseData) => {
+        setData({ items: responseData });
+      });
+  }, []);
 
   /**
    * Called from SearchBar.jsx
@@ -28,16 +36,33 @@ function App() {
    * Called from ItemDisplay.jsx
    * takes in data about the item to be added
    * assigns current 'data' array to 'items'
+   * Posts to Json server
    * concats new data to array
-   * updates state and logs array
+   * updates state
    * @param {*} itemData
    */
   const addItemToData = (itemData) => {
     let items = dataList["items"]; //initially empty, then filled subsequently
     itemData.id = items.length + 1; //creates dynamic id based on array size starting at 1
-    items.push(itemData); //adds new item data to current list items data
-    setData({ items: items }); //calls set data to set the array in the state to the new concat array 'items'
-    console.log(dataList); //logs the new array
+
+    /**
+     * Options for post request to add to json server
+     * Body is a json stringify of itemData
+     */
+    const requestOptions = {
+      method: "POST",
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(itemData),
+    };
+
+    fetch("http://localhost:3000/items", requestOptions)
+      .then((response) => response.json()) //response from server is the item data obj returned
+      .then((responseData) => {
+        items.push(responseData); //adds the response data to the new concat array
+        setData({ items: items }); //calls setData to update the state to hold the new updated 'items' array
+      });
   };
 
   /**
@@ -45,14 +70,14 @@ function App() {
    * Checks if each data property is not equal to its default value
    * Checks to see if there is a matching property
    * returns all matching items via filteredData array
-   * @param {*} data 
-   * @returns 
+   * @param {*} data
+   * @returns
    */
   const filterData = (data) => {
     const filteredData = [];
 
     // Check if no filters are provided or if all filters are empty
-    if (Object.values(filters).every(value => value === '' || value === 0)) {
+    if (Object.values(filters).every((value) => value === "" || value === 0)) {
       return data;
     }
 
