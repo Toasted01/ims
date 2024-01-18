@@ -3,6 +3,16 @@
 Web application to allow the user to create and manage an inventory sheet. Allows the user to see the whole inventory as well as add to it and search it.  
 Made to Learn react.
 
+## Installation
+
+- npm i
+
+## Running the application
+
+- open 2 terminals in root folder
+- in terminal 1 : 'powershell -ExecutionPolicy Bypass -Command "json-server db.json"'
+- in terminal 2 : npm start
+
 ## Features
 
 - Ability to add item
